@@ -1,0 +1,36 @@
+<div class="">
+  
+  <div class="prose ml-6 my-8">
+    <h1 class="prose ml-0 mb-8">This is where we'll place Stimulus controlled html elements: </h1>
+  </div>
+
+  <div data-controller="hello" class="ml-6">
+    <div class="prose text-nowrap my-2">
+      <ul class="pl-4">
+        <li class="list-disc">A button element with a Stimulus data action on it that inserts to hardcoded text into a data target:</li>
+      </ul>
+    </div>
+    <div class="flex flex-row items-center flex-start ">
+      <button data-action="click->hello#hi" class="btn btn-primary p-2 mr-6">Hi from hello controller ...</button>
+      <p data-hello-target="output" class="p-2 text-nowrap italic font-semibold underline under"></p>
+    </div>
+  </div>
+
+  <div data-controller="toggle" class="ml-6 mt-14">
+    <div class="prose text-nowrap my-2">
+      <ul class="pl-4">
+        <li class="list-disc">Here's a checkbox toggle element controlled by a Stimulus Toggle controller:</li>
+      </ul>
+    </div>
+
+    <div class="flex flex-row items-center flex-start ">
+      <div class="form-control">
+        <label class="label cursor-pointer">
+          <span class="label-text mr-4">Toggle auto pizza</span> 
+          <input data-action="change->toggle#animate" data-toggle-target="checkbox" type="checkbox" checked="checked" class="checkbox checkbox-primary" />
+        </label>
+      </div>
+    </div>
+  </div> 
+   
+</div>
