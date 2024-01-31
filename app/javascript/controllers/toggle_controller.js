@@ -1,12 +1,13 @@
 import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
-  static targets = ["checkbox", "checkedOutput", "select"]
+  static targets = ["checkbox", "checkedOutput", "select", "card"]
   connect() {
     console.log("Toggle Controller is now connected.")
-    console.log(this.hasCheckboxTarget);
-    console.log(this.hasCheckedOutputTarget);
-    console.log(this.hasSelectTarget);
+    console.log(`'checkbox' target found: ${this.hasCheckboxTarget}`);
+    console.log(`'checkedOutput' target found: ${this.hasCheckedOutputTarget}`);
+    console.log(`'select' target found: ${this.hasSelectTarget}`);
+    console.log(`'card' target found: ${this.hasCardTarget}`);
   }
 
   animate() {
@@ -20,6 +21,34 @@ export default class extends Controller {
 
   show_dropdown() {
     this.selectTarget.classList.toggle("hidden")
+  }
+
+  replace() {
+    const newCard = document.createElement("div");
+    newCard.classList.add("carousel", "carousel-start", "transition-opacity", "duration-700", "opacity-0", "h-56", "w-96");
+    newCard.innerHTML = `
+        <div class="carousel-item">
+          <img src="assets/fish1.jpg" alt="Spring" />
+        </div> 
+        <div class="carousel-item">
+          <img src="assets/fish2.jpg" alt="Summer" />
+        </div> 
+        <div class="carousel-item">
+          <img src="assets/fish3.jpg" alt="Autumn" />
+        </div> 
+        <div class="carousel-item">
+          <img src="assets/fish4.jpg" alt="Winter" />
+        </div> 
+      `;
+
+    const currentCard = this.cardTarget;
+    currentCard.parentNode.replaceChild(newCard, currentCard);
+    
+    requestAnimationFrame(() => {
+      newCard.classList.remove("opacity-0");
+      newCard.classList.add("opacity-100");
+    });
+
   }
  
 }
