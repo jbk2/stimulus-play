@@ -1,36 +1,87 @@
-<div class="">
-  
-  <div class="prose ml-6 my-8">
-    <h1 class="prose ml-0 mb-8">This is where we'll place Stimulus controlled html elements: </h1>
-  </div>
+<div class="grid grid-cols-2 justify-items-center">
 
-  <div data-controller="hello" class="ml-6">
-    <div class="prose text-nowrap my-2">
-      <ul class="pl-4">
-        <li class="list-disc">A button element with a Stimulus data action on it that inserts to hardcoded text into a data target:</li>
-      </ul>
-    </div>
-    <div class="flex flex-row items-center flex-start ">
-      <button data-action="click->hello#hi" class="btn btn-primary p-2 mr-6">Hi from hello controller ...</button>
-      <p data-hello-target="output" class="p-2 text-nowrap italic font-semibold underline under"></p>
-    </div>
-  </div>
-
-  <div data-controller="toggle" class="ml-6 mt-14">
-    <div class="prose text-nowrap my-2">
-      <ul class="pl-4">
-        <li class="list-disc">Here's a checkbox toggle element controlled by a Stimulus Toggle controller:</li>
-      </ul>
-    </div>
-
-    <div class="flex flex-row items-center flex-start ">
-      <div class="form-control">
-        <label class="label cursor-pointer">
-          <span class="label-text mr-4">Toggle auto pizza</span> 
-          <input data-action="change->toggle#animate" data-toggle-target="checkbox" type="checkbox" checked="checked" class="checkbox checkbox-primary" />
-        </label>
+  <div class="col-start-1 w-200">
+    <section>
+      <div class="prose ml-6 my-8">
+        <h1 class="prose ml-0 mb-8 text-wrap">This is where we'll place Stimulus controlled html elements: </h1>
       </div>
-    </div>
-  </div> 
+    </section>
+      
+    <section>
+      <div data-controller="hello" class="">
+        <div class="prose my-2">
+          <p class="text-wrap"><span class="font-bold mr-4">1.</span>A button element with a Stimulus data action on it that inserts to hardcoded text into a data target:</p>
+        </div>
+        <div class="flex flex-row items-center flex-start ">
+          <button data-action="click->hello#hi" class="btn btn-primary p-2 mr-6">Hi from hello controller ...</button>
+          <p data-hello-target="output" class="p-2 text-wrap italic font-semibold underline under"></p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+
+      <section>
+        <div data-controller="toggle" class="mt-14">
+          <div class="prose text-wrap my-2">
+            <p class=""><span class="font-bold mr-4">2.</span>Here's a checkbox toggle element controlled by a Stimulus Toggle controller:</p>
+          </div>
+          <div class="flex flex-row items-center flex-start ">
+            <div class="form-control">
+              <label class="label cursor-pointer">
+                <span class="label-text mr-4">Toggle auto pizza</span> 
+                <input data-action="change->toggle#animate" data-toggle-target="checkbox" type="checkbox" class="checkbox checkbox-primary" />
+                <span data-toggle-target="checkedOutput" class="ml-4"></span>
+              </label>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div class="prose text-wrap mt-14">
+          <p class=""><span class="font-bold mr-4">3.</span>Here's a button that reveals a new select element:</p>
+        </div>
+        <div class="flex flex-row items-center flex-start ">
+          <div class="form-control">
+            <label class="label cursor-pointer">
+              <button data-action="toggle#show_dropdown" class="btn btn-accent">Toggle dropdown</button>
+              <%= select_tag :users, options_for_select(['user_1', 'user_2', 'user_3']), { class: "hidden ml-4 select select-accent", data: { toggle_target: "select" } } %>
+            </label>
+          </div>
+        </div>
+      </section>
+      
+      <section>
+        <div class="prose text-wrap mt-14">
+          <p class="mb-4"><span class="font-bold mr-4">4.</span>Here's a card element which when you click in it removes itself and adds new content:</p>
+        </div>
+        <div class="card w-96 bg-base-100 shadow-xl">
+          <figure><%= image_tag('fish1.jpg', alt: 'Fish') %></figure>
+          <div class="card-body">
+            <h2 class="card-title">I'm a Parrtofish 🐠</h2>
+            <p>Click me to find out what I look like in another season.</p>
+          </div>
+        </div>       
+      </section>
+
+    </section>
+  </div>
+
+
+  <div class="col-start-2">
+    <section>
+      <div class="prose text-wrap mt-14">
+        <p class="mb-4"><span class="font-bold mr-4">4.</span>Here's a card element which when you click in it removes itself and adds new content:</p>
+      </div>
+      <div class="card w-96 bg-base-100 shadow-xl">
+        <figure><%= image_tag('fish1.jpg', alt: 'Fish') %></figure>
+        <div class="card-body">
+          <h2 class="card-title">I'm a Parrtofish 🐠</h2>
+          <p>Click me to find out what I look like in another season.</p>
+        </div>
+      </div> 
+    </section>
+  </div>
    
 </div>
