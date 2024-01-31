@@ -1,7 +1,7 @@
 import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
-  static targets = ["checkbox", "checkedOutput", "select", "card", "phoneBezel", "phoneScreen", "phoneCheckbox"]
+  static targets = ["checkbox", "checkedOutput", "select", "card", "phoneBezel", "phoneScreen", "phoneCheckbox", "textArea", "warning"]
   connect() {
     console.log("Toggle Controller is now connected.")
     console.log(`'checkbox' target found: ${this.hasCheckboxTarget}`);
@@ -11,6 +11,8 @@ export default class extends Controller {
     console.log(`'PhoneBezel' target found: ${this.hasPhoneBezelTarget}`);
     console.log(`'PhoneScreen' target found: ${this.hasPhoneScreenTarget}`);
     console.log(`'PhoneCheckbox' target found: ${this.hasPhoneCheckboxTarget}`);
+    console.log(`'TextArea' target found: ${this.hasTextAreaTarget}`);
+    console.log(`'Warning' target found: ${this.hasWarningTarget}`);
   }
 
   animate() {
@@ -60,6 +62,28 @@ export default class extends Controller {
       } else {
         this.phoneBezelTarget.classList.remove("border-primary")
         this.phoneScreenTarget.classList.remove("bg-teal-200")
+      }
+    }
+
+    charMonitor() {
+      const approachChars = 15;
+      const maxChars = 20;
+      const currentLength = this.textAreaTarget.value.length
+      console.log(`****** LENGTH IS${currentLength}`);
+
+      if (currentLength > approachChars && currentLength < maxChars) {
+        // Show warning and change background color
+        this.textAreaTarget.classList.add("bg-red-100"); // Example color class
+        this.warningTarget.textContent = `Approaching 20 char limit - ${currentLength} chars`
+        this.warningTarget.classList.remove("hidden")
+      } else if (currentLength > maxChars) {
+        // Remove warning color if under limit
+        this.textAreaTarget.classList.add("bg-red-300"); // Example color class
+        this.warningTarget.textContent = `Now over 20 char limit - ${currentLength} chars`
+        this.warningTarget.classList.remove("hidden")
+      } else {
+        this.textAreaTarget.classList.remove("bg-red-100", "bg-red-300");
+        this.warningTarget.classList.add("hidden")
       }
     }
  

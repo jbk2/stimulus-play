@@ -73,10 +73,14 @@
   </div>
 
 
-  <div class="col-start-2">
+  <div class="col-start-2 w-200">
+    
     <div data-controller="toggle">
       <section>
-        <div data-toggle-target="phoneBezel" class="mockup-phone mt-14 transition-colors duration-700">
+        <div class="prose text-wrap mt-14">
+          <p class="mb-4"><span class="font-bold mr-4">5.</span>Here's checkbox which powers on a phone:</p>
+        </div>
+        <div data-toggle-target="phoneBezel" class="mockup-phone transition-colors duration-700">
           <div class="camera"></div> 
           <div class="display">
             <div data-toggle-target="phoneScreen" class="artboard artboard-demo phone-1 transition-colors duration-700">
@@ -86,6 +90,20 @@
           </div>
         </div>
       </section>
+
+      <section>
+        <div class="prose text-wrap mt-14">
+          <p class="mb-4"><span class="font-bold mr-4">6.</span>Here's a textarea which alerts you when you're close to character limit:</p>
+        </div>
+        <input type="text-area"
+        data-toggle-target="textArea"
+        data-action="input->toggle#charMonitor"
+        placeholder="Text length here..."
+        class="textarea textarea-bordered textarea-md w-52">
+        <span data-toggle-target="warning" class="hidden text-xs italic ml-2"></span>
+      </section>
+
+
     </div>
 
 
