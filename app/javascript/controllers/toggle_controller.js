@@ -1,13 +1,16 @@
 import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
-  static targets = ["checkbox", "checkedOutput", "select", "card"]
+  static targets = ["checkbox", "checkedOutput", "select", "card", "phoneBezel", "phoneScreen", "phoneCheckbox"]
   connect() {
     console.log("Toggle Controller is now connected.")
     console.log(`'checkbox' target found: ${this.hasCheckboxTarget}`);
     console.log(`'checkedOutput' target found: ${this.hasCheckedOutputTarget}`);
     console.log(`'select' target found: ${this.hasSelectTarget}`);
     console.log(`'card' target found: ${this.hasCardTarget}`);
+    console.log(`'PhoneBezel' target found: ${this.hasPhoneBezelTarget}`);
+    console.log(`'PhoneScreen' target found: ${this.hasPhoneScreenTarget}`);
+    console.log(`'PhoneCheckbox' target found: ${this.hasPhoneCheckboxTarget}`);
   }
 
   animate() {
@@ -48,7 +51,16 @@ export default class extends Controller {
       newCard.classList.remove("opacity-0");
       newCard.classList.add("opacity-100");
     });
-
   }
+
+    phoneOn() {
+      if (this.phoneCheckboxTarget.checked) {
+        this.phoneBezelTarget.classList.add("border-primary")
+        this.phoneScreenTarget.classList.add("bg-teal-200")
+      } else {
+        this.phoneBezelTarget.classList.remove("border-primary")
+        this.phoneScreenTarget.classList.remove("bg-teal-200")
+      }
+    }
  
 }
